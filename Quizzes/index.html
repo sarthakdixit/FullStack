@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quizes</title>
+  </head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+  <body>
+    <div id="alertBox">
+      <div id="askVideoAudio">
+        <h6>Program wants to access your webcam and mic. Please allow.</h6>
+        <button id="startTest" onclick="goToTest()" class="btn btn-success">Start Test</button>
+      </div>
+      <div id="notAllowed">
+        <h6>We can't access your webcam and mic.</h6>
+        <button id="backToaskVideoAudio" onclick="backToAlert()" class="btn btn-danger">Back</button>
+      </div>
+    </div>
+    <div id="Test">
+      <div id="topicsAndVideo">
+        <div id="timing">
+          <h4 id="min"></h4>
+          <h6>Minutes left</h6>
+        </div>
+        <div id="topics">
+          <div id="aptResC">
+            <button id="aptitude" class="btn btn-primary">Aptitude</button>
+            <button id="resoning" class="btn btn-primary" disabled>Resoning</button>
+            <button id="cprogramming" class="btn btn-primary" disabled>C Programming</button>
+          </div>
+        </div>
+        <video id="video"></video>
+      </div>
+      <div id="questionAnswer">
+        <div id="Questions">
+          <p id="que"></p>
+          <p id="A"></p>
+          <p id="B"></p>
+          <p id="C"></p>
+          <p id="D"></p>
+        </div>
+        <div id="OptionAndButton">
+          <div id="options">
+            <form>
+              <label class="radio-inline">
+                <input type="radio" id="radioA" name="radio" value="A">A
+              </label>
+              <label class="radio-inline" style="margin-left: 20px;margin-right: 20px;">
+                <input type="radio" id="radioB" name="radio" value="B">B
+              </label>
+              <label class="radio-inline" style="margin-right: 20px;">
+                <input type="radio" id="radioC" name="radio" value="C">C
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="radioD" name="radio" value="D">D
+              </label>
+            </form>
+          </div>
+          <div id="buttons">
+            <div id="next">
+              <button onclick="nextQuestions()" class="btn btn-primary">Next</button>
+            </div>
+            <div id="nextSection">
+              <button onclick="nextSection()" class="btn btn-success">Next Section</button>
+            </div>
+            <div id="finish">
+              <button onclick="finishTest()" class="btn btn-danger">Finish Test</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="warningBlock" style="text-align: center; display: none;">
+        <h6 id="warning" style="text-align: center;"></h6>
+      </div>
+    </div>
+    <div id="resultBox">
+      <h6 style="text-align: center; margin-top: 5%;">Result</h6>
+    </div>
+  </body>
+  <script src="index.js"></script>
+  <script src="questions.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

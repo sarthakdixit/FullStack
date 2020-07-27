@@ -1,0 +1,133 @@
+#alertBox{
+  width: 500px;
+	height: 200px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  margin: auto;
+  text-align: center;
+}
+
+#Test{
+  display: none;
+}
+
+#startTest{
+  width: 80%;
+  margin-top: 30px;
+}
+
+#notAllowed{
+  display: none;
+}
+
+#backToAskVideoAudio{
+  width: 80%;
+  margin-top: 30px;
+}
+
+#topicsAndVideo{
+  display: flex;
+  width: 100%;
+  height: 100px;
+}
+
+#topicsAndVideo{
+  border-bottom: 2px solid blue;
+}
+
+#topics{
+  width: 75%;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#aptitude{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#resoning{
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#cprogramming{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#video{
+  width: 25%;
+  height: 100px;
+}
+
+#nextSection{
+  width: 30%;
+  display: none;
+}
+
+#resultBox{
+  display: none;
+}
+
+#OptionAndButton{
+  display: flex;
+}
+
+#options{
+  width: 80%;
+  text-align: center;
+}
+
+#next{
+  position: absolute;
+  right: 150px;
+}
+
+#nextSection{
+  display: none;
+}
+
+#finish{
+  display: none;
+}
+
+.table{
+  text-align: center;
+}
+
+#resultBox{
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#cheating{
+  display: none;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#timing > *{
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+#warningBlock{
+  text-align: center; 
+  display: none;
+  border: 2px red solid;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 30px;
+}
