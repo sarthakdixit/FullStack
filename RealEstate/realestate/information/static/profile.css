@@ -1,0 +1,18 @@
+#buildings_info_content{
+  margin: 5px 0px 5px 5px;
+  padding: 5px 5px 5px 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+#buildings_info_content:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#buildings_info_image img{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

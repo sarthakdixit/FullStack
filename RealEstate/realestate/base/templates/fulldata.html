@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<body>
+  {% for d in data %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h4>Walkthrough Video</h4>
+          <div class="embed-responsive embed-responsive-16by9">
+<video width="320" height="240" controls autoplay>
+  <source src="{{ MEDIA_URL }}{{ d.video }}" type="video/mp4">
+</video>
+          </div><br>
+          <h4>Photos</h4>
+          <div class="container"> 
+            <div class="card" style="width: 30rem; margin: 2rem;"> 
+              <div class="image-grid-container" style="display: grid;
+              grid-template-columns: auto auto;"> 
+                <img style="width:100%; padding: 5px;" src="{{ MEDIA_URL }}{{ d.photo1 }}">
+                <img style="width:100%; padding: 5px;" src="{{ MEDIA_URL }}{{ d.photo2 }}">
+                <img style="width:100%; padding: 5px;" src="{{ MEDIA_URL }}{{ d.photo3 }}">
+                <img style="width:100%; padding: 5px;" src="{{ MEDIA_URL }}{{ d.photo4 }}">
+              </div> 
+            </div> 
+        </div> 
+        </div>
+        <div class="col">
+          <table class="table table-hover" style="margin-top: 20%;">
+            <tr>
+              <td colspan="2"><b>Type</b></td>
+              <td colspan="2">{{ d.typ }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Action</b></td>
+              <td colspan="2">{{ d.action }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>City</b></td>
+              <td colspan="2">{{ d.city }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>State</b></td>
+              <td colspan="2">{{ d.state }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>PIN</b></td>
+              <td colspan="2">{{ d.pin }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Contact</b></td>
+              <td colspan="2">{{ d.owner }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Description</b></td>
+              <td colspan="2">{{ d.desc }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Neighbourhood</b></td>
+              <td colspan="2">{{ d.neigh }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Area(sqft)</b></td>
+              <td colspan="2">{{ d.area }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Price(Rs.)</b></td>
+              <td colspan="2">{{ d.price }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <div></div>
+  {% endfor %}
+</body>
+</html>

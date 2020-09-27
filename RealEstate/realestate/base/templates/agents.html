@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block list %}
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'flat' %}">Flat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'villa' %}">Villa/House</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'plot' %}">Plot/Land</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'commercial' %}">Commercial</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'farm' %}">Farm House</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'interior' %}">Interior Designers</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'agents' %}">Agents</a>
+    </li>
+  </ul>
+{% endblock list %}
+
+{% block filterInteriorAndAgents %}
+  <div class="d-flex justify-content-center align-items-center" style="height:100px;">
+    <div>
+      <form method="GET" action="">
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <input type="text" class="form-control" name="search" placeholder="Name/City/State/PIN..">
+          </div>
+          <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Filter</button>
+          </div>
+        </div>
+      </form>
+    </div>    
+  </div>
+  <hr>
+{% endblock filterInteriorAndAgents %}
+
+{% block contentInteriorAndAgents %}
+  <div id="content" class="container-fluid jumbotron" style="background-color: white;">
+    <div class="row">
+      {% if data %}
+        {% for d in data %}
+          <div class="column">
+            <div class="card" style="width: 18rem;" id="buildings_show">
+              <p hidden>{{ d.IDNO }}</p>
+              <a href="showAgents/{{ d.owner }}">
+                <img class="card-img-top" src="{{ MEDIA_URL}}{{ d.photo }}" alt="No Image" width="100px" height="150px">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">{{ d.name }}</h5>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h4>No data..</h4>
+      {% endif %}
+    </div>
+  </div>
+{% endblock contentInteriorAndAgents %}

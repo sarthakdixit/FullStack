@@ -1,0 +1,18 @@
+#flat img:last-child{
+  display: none;
+}
+
+#button{
+  width: 50%;
+  margin: 10px 0px 10px 0px;
+}
+.contain{
+  border-radius: 10px;
+  background-color: #f0f1f2;
+  margin: 10px;
+}
+.body_container{
+  text-align: center; 
+  font-family: 'Gill Sans', sans-serif; 
+  margin-top: 20px;
+}

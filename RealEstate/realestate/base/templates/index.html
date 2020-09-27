@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'index/index.css' %}">
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <a class="navbar-brand" href="{% url 'index' %}" style="color: white; margin-left: 20px;">
+        <img src="{% static 'houseLogo.jpg' %}" width="35" height="35" class="d-inline-block align-top" alt=""> Real Estate
+      </a>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          {% if global_user == 'NO' %}
+            <a href="{% url 'user_login' %}?next={{ request.path|urlencode }}">
+              <button class="btn btn-white" style="border: 2px solid white; color: white;">Login</button>
+            </a>
+          {% endif %}
+          {% if global_user != 'NO' %}
+            <a class="navbar-brand" href="{% url 'info' %}" style="color: white; margin-left: 20px;">
+              <img src="{% static 'login_logo.jpg' %}" width="35" height="35" title={{ global_user }} class="d-inline-block align-top" alt="">
+            </a>
+            <a href="{% url 'user_logout' %}?next={{ request.path|urlencode }}">
+              <button class="btn btn-white" style="border: 2px solid white; color: white;">Logout</button>
+            </a>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="body_container">
+    <h2><b>No Place Like Home</b></h2>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="contain" onmouseover="flatAnimate()" onmouseout="flatAnimateBack()">
+            <img src="{% static 'index/flat.jpg' %}" id="Flat1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/flat1.jpg' %}" id="Flat2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'flat' %}">
+              <button class="btn btn-dark" id="button">Flat</button>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="contain" onmouseover="villaAnimate()" onmouseout="villaAnimateBack()">
+            <img src="{% static 'index/villa.jpg' %}" id="Villa1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/villa1.jpg' %}" id="Villa2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'villa' %}">
+              <button class="btn btn-dark" id="button">Villa/House</button>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="contain" onmouseover="plotAnimate()" onmouseout="plotAnimateBack()">
+            <img src="{% static 'index/plot.jpg' %}" id="Plot1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/plot1.jpg' %}" id="Plot2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'plot' %}">
+              <button class="btn btn-dark" id="button">Plot/Land</button>
+            </a>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="contain" onmouseover="commercialAnimate()" onmouseout="commercialAnimateBack()">
+            <img src="{% static 'index/commercial.jpg' %}" id="Commercial1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/commercial1.jpg' %}" id="Commercial2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'commercial' %}">
+              <button class="btn btn-dark" id="button">Commercial</button>
+            </a>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="contain" onmouseover="farmAnimate()" onmouseout="farmAnimateBack()">
+            <img src="{% static 'index/farm.jpg' %}" id="Farm1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/farm1.jpg' %}" id="Farm2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'farm' %}">
+              <button class="btn btn-dark" id="button">Farm House</button>
+            </a>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="contain" onmouseover="interiorAnimate()" onmouseout="interiorAnimateBack()">
+            <img src="{% static 'index/interior.jpg' %}" id="Interior1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/interior1.jpg' %}" id="Interior2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'interior' %}">
+              <button class="btn btn-dark" id="button">Interior Designers</button>
+            </a>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="contain" onmouseover="agentAnimate()" onmouseout="agentAnimateBack()">
+            <img src="{% static 'index/agent.jpg' %}" id="Agent1" alt="Flat" height="200px" width="100%">
+            <img src="{% static 'index/agent1.jpg' %}" id="Agent2" alt="Flat" height="200px" width="100%" style="display: none;">
+            <a href="{% url 'agents' %}">
+              <button class="btn btn-dark" id="button">Agents</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top: 20px;">
+    <hr>
+    <div style="text-align: center;">
+      <p style="margin: 10px 15% 10px 15%;">Our Group is committed to ensuring digital accessibility for individuals with disabilities. We are continuously working to improve the accessibility of our web experience for everyone, and we welcome feedback and accommodation requests. If you wish to report an issue or seek an accommodation, please <a href="">contact us.</a></p>
+      <p style="margin: 20px 15% 10px 15%;">Real Estate, Inc. has a real estate brokerage license in multiple states. A list of our real estate licenses is available <a href="">here.</a></p>
+    </div>
+  </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="{% static 'index/index.js' %}"></script>
+</html>

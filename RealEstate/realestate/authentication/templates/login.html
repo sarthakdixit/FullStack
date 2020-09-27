@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<body>
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+	      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+      <div class="container">
+        <div class="row text-white">
+          <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+            <h1 class="display-4 py-2 text-truncate">{{ h1 }}</h1>
+            <div class="px-2">
+              <form action="{{ action }}" method="post">
+                {% csrf_token %}
+                <table>
+                  <tr>
+                    <td>Email</td>
+                    <td colspan="2" style="width: 100%;">
+                      <input type="email" name="email" class="form-control" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><br></td>
+                  </tr>
+                  <tr>
+                    <td>Password</td>
+                    <td colspan="2" style="width: 100%;">
+                      <input type="password" name="password" minlength="6" class="form-control" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><br></td>
+                  </tr>
+                </table>       
+                <button type="submit" class="btn btn-dark btn-lg btn-block" name="add_record">Add Record</button>
+                {% if login %}
+                  <a href="{% url 'user_register' %}" style="text-decoration: none;">
+                    <p style="color: white;margin-top: 20px;">Go to Registeration Page.</p>
+                  </a>
+                {% endif %}
+                {% if register %}
+                  <a href="{% url 'user_login' %}" style="text-decoration: none;">
+                    <p style="color: white; margin-top: 20px;">Go to Login Page.</p>
+                  </a>
+                {% endif %}
+                <a href="{% url 'back' %}" style="text-decoration: none;">
+                  <p style="color: white;">Back</p>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

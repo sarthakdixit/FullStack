@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block list %}
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'flat' %}">Flat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'villa' %}">Villa/House</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'plot' %}">Plot/Land</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'commercial' %}">Commercial</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'farm' %}">Farm House</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'interior' %}">Interior Designers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'agents' %}">Agents</a>
+    </li>
+  </ul>
+{% endblock list %}
+
+{% block filterBlock %}
+  <form method="GET" action="">
+    <div class="form-group" style="margin: 25% 0px 0px 20px;">
+      <label>Action</label><br>
+      <select name="action" class="btn btn-light">
+        {% if action == 'buy' %}
+          <option value="both">Buy and Rent</option>  
+          <option value="buy" selected>Buy</option>  
+          <option value="rent">Rent</option>  
+        {% endif %}
+        {% if action == 'rent' %}
+          <option value="both">Buy and Rent</option>  
+          <option value="buy">Buy</option>  
+          <option value="rent" selected>Rent</option>  
+        {% endif %}
+        {% if action != 'buy' and action != 'rent' or not action %}
+          <option value="both" selected>Buy and Rent</option>  
+          <option value="buy">Buy</option>  
+          <option value="rent">Rent</option>
+        {% endif %}
+      </select><br>
+      <label style="margin-top: 10px;">Search</label>
+      {% if search %}
+        <input name="search" value="{{ search }}" class="form-control" placeholder="City/State/PIN..">
+      {% endif %}
+      {% if not search %}
+        <input name="search" class="form-control" placeholder="City/State/PIN..">
+      {% endif %}
+      <button class="btn btn-primary" style="width: 100%; margin: 10px 0px 0px 0px;">Filter</button>
+    </div>
+  </form>
+{% endblock filterBlock %}
+
+{% block contentBlock %}
+  <div id="content" class="container-fluid jumbotron" style="margin-top: 20px; background-color: white;">
+    <div class="row">
+      {% if data %}
+        {% for d in data %}
+          <div class="column">
+            <div class="card" style="width: 18rem;" id="buildings_show">
+              <p hidden>{{ d.IDNO }}</p>
+              <a href="fulldata/{{ d.IDNO }}">
+                <img class="card-img-top" src="{{ MEDIA_URL}}{{ d.photo1 }}" alt="No Image" width="100px" height="150px">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">Price(Rs.): {{ d.price }}</h5>
+                <p class="card-text">Area(sqft): {{ d.area }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h4>No data..</h4>
+      {% endif %}
+    </div>
+  </div>
+{% endblock contentBlock %}
